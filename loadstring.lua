@@ -1139,21 +1139,9 @@ local function SEWE_fake_script() -- StartSequencer.LocalScript
 		script.Parent.Parent.Parent.Parent.Main:Remove()
 	end)
 end
-coroutine.wrap(SEWE_fake_script)()
-local function DUHGLJX_fake_script() -- FrappeSnappe.LocalScript 
-	local script = Instance.new('LocalScript', FrappeSnappe)
-
-	local e = false
-	game:GetService("UserInputService").InputBegan:Connect(function(inn, are)
-		if inn.KeyCode == Enum.KeyCode.R and are == false then
-			if e == false then
-				e = true
-				script.Parent.Main.Visible = false
-			else
-				e = false
-				script.Parent.Main.Visible = true
-			end
-		end
-	end)
-end
+game:GetService("UserInputService").InputBegan:Connect(function(input, using)
+	if using == false and input.KeyCode == Enum.KeyCode.R then
+		FrappeSnappe.Enabled = not FrappeSnappe.Enabled	
+	end
+end)
 
